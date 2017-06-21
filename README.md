@@ -24,7 +24,7 @@ npm install yarn -g
 
 Install node via [https://nodejs.org/en/download/](https://nodejs.org/en/download/) and then use powershell & npm to install express and yarn
 
-```
+``` 
 npm install express-generator -g
 npm install yarn -g
 ```
@@ -63,13 +63,13 @@ yarn add nodemon
 
 add to project.json under the scripts section
 
-```
+``` json
  "watch":"nodemon ./bin/www"
 ```
 
 so your project json should look like this:
 
- ```
+ ``` json
 {
   "name": "top100",
   "version": "0.0.0",
@@ -110,13 +110,13 @@ yarn add request
 
 Now in the `routes/index.js`, lets add a refernce to that module
 
-```
+``` js
 const request = require("request");
 ```
 
 And we need to make the call to the API
 
-```
+``` js
 let _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/100/non-explicit/json";
   request.get(_url, (error, response, body) => {
     let _json = JSON.parse(body);
@@ -131,13 +131,13 @@ let _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/100/no
 ### Add some css (bootstrap!)
 Lets add bootstrap to our site using a cdn. Since we want this on every page, we should must put this on our layout page. Open `views/layout.jade` and add this to head
 
-```
+``` jade
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
 ```
 
 And add this to the end of body
 
-```
+``` jade
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     
@@ -150,7 +150,7 @@ Now we have the data in the view, lets add some html to display the data:
 
 Open `views/index.jade`  and replace it with the following pug
 
-```
+``` jade 
 extends layout
 
 block content
@@ -182,7 +182,7 @@ block content
 ### add some custom CSS
 Now lets add some custom css to `public/stylesheets/style.css`
 
-```
+```css
 .genre-label{
   margin: 1em;
   display: inline-block;
@@ -210,7 +210,7 @@ We need to add a new route to our `index.js` in order to add the new page
 
 Add this to `routes/index.js`
 
-```
+```js
 router.get('/search', function (req, res, next) {
   let _term = req.query.needle;
   let _url = "https://itunes.apple.com/search?&entity=album&term=" + _term;
@@ -226,7 +226,7 @@ router.get('/search', function (req, res, next) {
 
 No we need to update the pug to have a search bar & render the new data format
 
-```
+``` jade
 extends layout
 
 block content
