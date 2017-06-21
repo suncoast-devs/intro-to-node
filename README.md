@@ -41,7 +41,7 @@ Lets use the generator to create a new app
 mkdir CrashCourse
 cd CrashCourse
 express Top100
-cd Top100 && npm install
+cd Top100 && yarn
 ```
 
 You should now be able to run to with 
