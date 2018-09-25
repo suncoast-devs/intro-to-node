@@ -117,11 +117,12 @@ const request = require("request");
 And we need to make the call to the API
 
 ``` js
-let _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/100/non-explicit/json";
+const _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/100/explicit.json"
   request.get(_url, (error, response, body) => {
-    let _json = JSON.parse(body);
-    let _top100 = _json.feed.results;
-    res.render('index', { title: 'TIY Top 100 of the day', data: _top100});
+    const _json = JSON.parse(body);
+    const _top100 = _json.feed.results;
+    console.log({_top100: _top100[0]})
+    res.render('index', { title: 'TIY Top 100 of the day', data: _top100 });
   });
 ```
 
@@ -171,10 +172,11 @@ block content
                 h4(class="text-nowrap ellipsis")!= data[i].name
                 p 
                  .labels
-                   - for (let j = 0; j < (data[i].genreNames.length > 3 ? 3 : data[i].genreNames.length) ; j++)
-                    span(class="label label-info genre-label" )= data[i].genreNames[j]
+                   - for (let j = 0; j < (data[i].genres.length > 3 ? 3 : data[i].genres.length) ; j++)
+                    span(class="label label-info genre-label" )= data[i].genres[j].name
                 p
                   a.btn.btn-primary(href=data[i].url, target="_blank") More Detail
+        
         
 ```
 
@@ -184,7 +186,7 @@ Now lets add some custom css to `public/stylesheets/style.css`
 
 ```css
 .genre-label{
-  margin: 1em;
+  margin: 0.5em;
   display: inline-block;
 }
 
