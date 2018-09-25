@@ -1,6 +1,6 @@
 # Intro to Node
 
-Welcome! This is the step by step guide to following along with the Intro to Node.js Crash course at TIY Tampa/St Pete. We will be creating a Top 100 Album website with node and express that pulls data from the iTunes API. 
+Welcome! This is the step by step guide to following along with the Intro to Node.js Crash course at Suncoast Developers Guild. We will be creating a Top 100 Album website with node and express that pulls data from the iTunes API. 
 
 
 ## Setup
@@ -122,7 +122,7 @@ const _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/
     const _json = JSON.parse(body);
     const _top100 = _json.feed.results;
     console.log({_top100: _top100[0]})
-    res.render('index', { title: 'TIY Top 100 of the day', data: _top100 });
+    res.render('index', { title: 'SDG Top 100 of the day', data: _top100 });
   });
 ```
 
@@ -219,7 +219,7 @@ router.get('/search', function (req, res, next) {
   request.get(_url, (error, response, body) => {
     let _json = JSON.parse(body);
     let _top100 = _json.results;
-    res.render('index', { title: 'TIY Top 100 of the day', data: _top100, needle:_term });
+    res.render('index', { title: 'SDG Top 100 of the day', data: _top100, needle:_term });
   });
 });
 ```
