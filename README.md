@@ -117,7 +117,7 @@ const request = require("request");
 And we need to make the call to the API
 
 ``` js
-const _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/100/explicit.json"
+const _url = "https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/100/non-explicit.json"
   request.get(_url, (error, response, body) => {
     const _json = JSON.parse(body);
     const _top100 = _json.feed.results;
